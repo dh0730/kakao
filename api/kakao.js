@@ -1,4 +1,6 @@
-export default function handler(req, res) {
+import axios from 'axios';
+
+export default async function handler(req, res) {
   // 카카오 챗봇은 POST로 요청을 보냅니다.
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
@@ -9,6 +11,22 @@ export default function handler(req, res) {
 
   // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
   console.log("카카오 요청 수신:", JSON.stringify(body));
+
+
+  try {
+    // GAS 웹앱 URL (배포된 Apps Script 웹앱 URL)
+    const gasUrl = 'https://script.google.com/macros/s/AKfycbwuy9z19Kq5BvPHafUf-MtRy_Kg3TS37Hbyi9aINUBty98jqPtXGstx4YXgdeSZ56jt/exec';
+
+    // GAS에 보낼 데이터
+    const gasResponse = await axios.post(gasUrl, {
+      kakaoData: body
+    });
+
+    console.log("GAS 응답:", gasResponse.data);
+  } catch (error) {
+    console.error("GAS 호출 오류:", error);
+  }
+
 
   const response = {
   version: "2.0",
