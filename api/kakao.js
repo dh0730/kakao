@@ -12,14 +12,14 @@ export default async function handler(req, res) {
   // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
   console.log("카카오 요청 수신:", JSON.stringify(body));
 
-
+  
   try {
     // GAS 웹앱 URL (배포된 Apps Script 웹앱 URL)
     const gasUrl = 'https://script.google.com/macros/s/AKfycbwyIG_ySVI3SX-IZmZiSCGBWIH8Vyzu2uiawZNvjoAQe8mzhZ-VIdCr7-wFdXxvI7Rj/exec';
 
     // GAS에 보낼 데이터
     const gasResponse = await axios.post(gasUrl, {
-      kakaoData: body
+      kakaoData: body.params
     });
 
     console.log("GAS 응답:", gasResponse.data);
