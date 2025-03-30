@@ -28,7 +28,7 @@ export default function handler(req, res) {
         "name": "moveToBlock",
         "lifeSpan": 1,
         "params": {
-          "blockId": "다음블록ID"
+          "blockId": "67e6525a64979267ce2b9739"
         }
       }
     ]
