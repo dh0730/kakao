@@ -18,7 +18,8 @@ export default async function handler(req, res) {
 
     // GAS에 보낼 데이터
     const gasResponse = await axios.post(gasUrl, {
-      kakaoData: body.action.params,
+      params: body.action.params,
+      clientExtra: body.action.clientExtra,
       user: body.userRequest.user.id
     });
     
