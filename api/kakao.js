@@ -15,7 +15,7 @@ export default async function handler(req, res) {
   
   try {
     // GAS 웹앱 URL (배포된 Apps Script 웹앱 URL)
-    const gasUrl = 'https://script.google.com/macros/s/AKfycbwrA8D-x3n1s85TjWg8UHluMqYJS0fn3N81io3tb2dWxhTe-xe-1Ys3eLylOvr9fxxS/exec';
+    const gasUrl = 'https://script.google.com/macros/s/AKfycbx03Kg3BbcoCNnVgEke2jx8GiCLg64hj5Di-yiC21iCBP_ywPKDyy9H7X6iOdVNSccy/exec';
 
     // GAS에 보낼 데이터
     const gasResponse = await axios.post(gasUrl, {
