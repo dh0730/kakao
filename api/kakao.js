@@ -29,7 +29,7 @@ export default function handler(req, res) {
       "lifeSpan": 1,
       "params": {
         "scenarioId": "67e51bbc53748b3e0cb65baa",
-        "blockId": "67e6525a64979267ce2b9739"
+        "blockId": "67e5ab185676f43ad025b038"
       }
     }
   ]
