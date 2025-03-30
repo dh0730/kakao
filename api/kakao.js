@@ -19,9 +19,9 @@ export default async function handler(req, res) {
 
     // GAS에 보낼 데이터
     const gasResponse = await axios.post(gasUrl, {
-      kakaoData: body.params
+      kakaoData: body.action.params
     });
-    console.log("GAS 호출:", body.params);
+    console.log("GAS 호출:", body.action.params);
     console.log("GAS 응답:", gasResponse.data);
   } catch (error) {
     console.error("GAS 호출 오류:", error);
