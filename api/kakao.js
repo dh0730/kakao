@@ -12,16 +12,27 @@ export default function handler(req, res) {
 
   // 카카오 오픈빌더 응답 포맷
   const response = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          simpleText: {
-            text: "✅ Vercel 연동 성공! 카카오에서 오신 걸 환영합니다 🎉"
-          }
+  "version": "2.0",
+  "template": {
+    "outputs": [
+      {
+        "simpleText": {
+          "text": "안녕하세요! 다음 블록으로 넘어갑니다."
         }
-      ]
-    }
+      }
+    ]
+  },
+  "context": {
+    "values": [
+      {
+        "name": "moveToBlock",
+        "lifeSpan": 1,
+        "params": {
+          "blockId": "다음블록ID"
+        }
+      }
+    ]
+  }
   };
 
   return res.status(200).json(response);
