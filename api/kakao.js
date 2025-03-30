@@ -11,7 +11,7 @@ export default async function handler(req, res) {
 
   // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
   console.log("카카오 요청 수신:", JSON.stringify(body));
-
+  console.log("-_-", body.userRequest.user.id);
   
   try {
     // GAS 웹앱 URL (배포된 Apps Script 웹앱 URL)
