@@ -23,16 +23,17 @@ export default function handler(req, res) {
     ]
   },
   "context": {
-    "values": [
-      {
-        "name": "moveToBlock",
-        "lifeSpan": 1,
-        "params": {
-          "blockId": "67e6525a64979267ce2b9739"
-        }
+  "values": [
+    {
+      "name": "moveToBlock",
+      "lifeSpan": 1,
+      "params": {
+        "scenarioId": "67e51bbc53748b3e0cb65baa",
+        "blockId": "67e6525a64979267ce2b9739"
       }
-    ]
-  }
+    }
+  ]
+}
   };
 
   return res.status(200).json(response);
