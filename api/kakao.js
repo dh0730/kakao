@@ -12,24 +12,7 @@ export default function handler(req, res) {
 
   // 카카오 오픈빌더 응답 포맷
   const response = {
-  "version": "2.0",
-  "template": {
-    "outputs": [
-      {
-        "basicCard": {
-          "title": "작업이 완료되었습니다!",
-          "description": "다음 단계로 진행하시겠어요?",
-          "buttons": [
-            {
-              "label": "다음으로",
-              "action": "block",
-              "blockId": "67e6525a64979267ce2b9739"
-            }
-          ]
-        }
-      }
-    ]
-  }
+  "version": "2.0"
 }
 
   return res.status(200).json(response);
