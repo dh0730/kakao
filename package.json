@@ -4,3 +4,8 @@
   "main": "api/kakao.js",
   "type": "module"
 }
+{
+  "dependencies": {
+    "axios": "^1.8.4"
+  }
+}
