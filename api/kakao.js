@@ -20,18 +20,6 @@ export default function handler(req, res) {
         }
       }
     ]
-  },
-  context: {
-    values: [
-      {
-        name: "moveToBlock",
-        lifeSpan: 1,
-        params: {
-          blockId: "67e62a850e01a1241f246153", // 👉 이동할 블록 ID
-          scenarioId: "67e51bbc53748b3e0cb65baa" // 👉 다른 시나리오일 경우 필수
-        }
-      }
-    ]
   }
 };
 
