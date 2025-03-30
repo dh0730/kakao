@@ -23,7 +23,7 @@ export default function handler(req, res) {
             {
               "label": "다음으로",
               "action": "block",
-              "blockId": "67e62a850e01a1241f246153"
+              "blockId": "67e6525a64979267ce2b9739"
             }
           ]
         }
