@@ -16,25 +16,21 @@ export default function handler(req, res) {
   "template": {
     "outputs": [
       {
-        "simpleText": {
-          "text": "안녕하세요! 다음 블록으로 넘어갑니다."
+        "basicCard": {
+          "title": "작업이 완료되었습니다!",
+          "description": "다음 단계로 진행하시겠어요?",
+          "buttons": [
+            {
+              "label": "다음으로",
+              "action": "block",
+              "blockId": "67e62a850e01a1241f246153"
+            }
+          ]
         }
       }
     ]
-  },
-  "context": {
-  "values": [
-    {
-      "name": "moveToBlock",
-      "lifeSpan": 1,
-      "params": {
-        "scenarioId": "67e51bbc53748b3e0cb65baa",
-        "blockId": "67e62a850e01a1241f246153"
-      }
-    }
-  ]
+  }
 }
-  };
 
   return res.status(200).json(response);
 }
