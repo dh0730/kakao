@@ -53,7 +53,7 @@ export default async function handler(req, res) {
     actions: [
       {
         action: "moveToBlock", // 블록 이동 액션
-        block: "B블록" // 이동할 블록 이름 (예: B블록)
+        block: "67e62a9564979267ce2b8e81" // 이동할 블록 이름 (예: B블록)
       }
     ]
   }
