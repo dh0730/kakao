@@ -41,20 +41,22 @@ export default async function handler(req, res) {
   
   if(body.action.params.type === "type_select")
   {
-    response = {
-  version: "2.0",
-  template: {
-    outputs: [
+    {
+  "version": "2.0",
+  "template": {
+    "outputs": [
       {
-        simpleText: {
-          text: "처리가 완료되었습니다. 다음 단계로 이동합니다."
+        "basicCard": {
+          "title": "처리가 완료되었습니다.",
+          "description": "다음 단계로 이동하세요.",
+          "buttons": [
+            {
+              "action": "block",
+              "label": "다음 단계로 이동",
+              "blockId": "67e62a9564979267ce2b8e81"
+            }
+          ]
         }
-      }
-    ],
-    actions: [
-      {
-        action: "moveToBlock", // 블록 이동 액션
-        block: "67e62a9564979267ce2b8e81" // 이동할 블록 이름 (예: B블록)
       }
     ]
   }
