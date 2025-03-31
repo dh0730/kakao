@@ -26,9 +26,7 @@ export default async function handler(req, res) {
   } catch (error) {
     console.error("GAS 호출 오류:", error);
   }
-
-
-  const response = {
+  var response = {
   version: "2.0",
   template: {
     outputs: [
@@ -39,7 +37,28 @@ export default async function handler(req, res) {
       }
     ]
   }
+  };
+  if (body.action.params.type === "type_select")
+  {
+    response = {
+  version: "2.0",
+  template: {
+    outputs: [
+      {
+        simpleText: {
+          text: "처리가 완료되었습니다. 다음 단계로 이동합니다."
+        }
+      }
+    ],
+    actions: [
+      {
+        action: "moveToBlock", // 블록 이동 액션
+        block: "B블록" // 이동할 블록 이름 (예: B블록)
+      }
+    ]
+  }
 };
+  }
 
   return res.status(200).json(response);
 }
