@@ -39,8 +39,8 @@ export default async function handler(req, res) {
   }
   };
   try{
-    console.log(utterance);
-    console.log(flow.lastBlock.name);
+    console.log(body.userRequest.utterance);
+    console.log(body.flow.lastBlock.name);
   }
   catch {
   }
