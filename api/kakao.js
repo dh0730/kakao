@@ -41,7 +41,7 @@ export default async function handler(req, res) {
   
   if(body.action.params.type === "type_select")
   {
-    {
+    response = {
   "version": "2.0",
   "template": {
     "outputs": [
