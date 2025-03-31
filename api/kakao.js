@@ -38,8 +38,13 @@ export default async function handler(req, res) {
     ]
   }
   };
-  console.log(utterance);
-  console.log(flow.lastBlock.name);
+  try{
+    console.log(utterance);
+    console.log(flow.lastBlock.name);
+  }
+  catch {
+  }
+  
   
   if(body.action.params.type === "type_select2")
   {
