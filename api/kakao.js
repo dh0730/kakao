@@ -42,25 +42,25 @@ export default async function handler(req, res) {
   if(body.action.params.type === "type_select")
   {
     response = {
-  "version": "2.0",
-  "template": {
-    "outputs": [
-      {
-        "basicCard": {
-          "title": "처리가 완료되었습니다.",
-          "description": "다음 단계로 이동하세요.",
-          "buttons": [
-            {
-              "action": "block",
-              "label": "다음 단계로 이동",
-              "blockId": "67e62a9564979267ce2b8e81"
-            }
-          ]
+    "version": "2.0",
+    "template": {
+      "outputs": [
+        {
+          "basicCard": {
+            "title": "처리가 완료되었습니다.",
+            "description": "다음 단계로 이동하세요.",
+            "buttons": [
+              {
+                "action": "block",
+                "label": "다음 단계로 이동",
+                "blockId": "67e62a9564979267ce2b8e81"
+              }
+            ]
+          }
         }
-      }
-    ]
-  }
-};
+      ]
+    }
+  };
   }
 
   return res.status(200).json(response);
