@@ -8,7 +8,7 @@ export default async function handler(req, res) {
 
   // 요청 body 받기
   const body = req.body;
-  var gasUrl = 'https://script.google.com/macros/s/AKfycbxFH1FPsSW3dBwsWYR5hI4Qg9ZIiFBAhNCF11cSDjPlkvEMwmxqh37jLZWgtLkIvFV2/exec';
+  var gasUrl = 'https://script.google.com/macros/s/AKfycbxNiE1wA11-qpAyrb1cpi8hN3BzQ3-9o5FAuUgviTKJtYEOzAmd8VN9xl8dabASm8Q6/exec';
   var gasResponse = '';
   // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
   console.log("카카오 요청 수신:", JSON.stringify(body));
