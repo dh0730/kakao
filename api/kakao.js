@@ -6,7 +6,7 @@ export default async function handler(req, res) {
   }
 
   const body = req.body;
-  const gasUrl = 'https://script.google.com/home/projects/1hBBEp3ojEI_krqsSgSt6nHouF-BTokGbkFCT-LY3NATkFkVZjhrLE5QU/edit';
+  const gasUrl = 'https://script.google.com/macros/s/AKfycbyGwbTZbWeC3Z870Guk3XpDxIaj86vcb582rPPnFLRwgdlWtxxKzOGCj_2EFX8-rDDU/exec';
 
   console.log("카카오 요청 수신:", JSON.stringify(body));
 
