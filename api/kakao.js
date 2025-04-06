@@ -12,7 +12,7 @@ import axios from 'axios';
    var gasResponse = '';
    // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
    console.log("카카오 요청 수신:", JSON.stringify(body));
- 
+   var response = "";
  
    if(body.action.params.type === "type_select2")
    {
