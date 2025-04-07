@@ -13,7 +13,23 @@ import axios from 'axios';
    // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
    console.log("카카오 요청 수신:", JSON.stringify(body));
    var response = "";
+
+  if (body.action.params.type === "type_select")
+         {
+           try {
+         // GAS에 보낼 데이터
+             body.action.params.type = "type_select";
+           gasResponse = await axios.post(gasUrl, {
+           params: body.action.params,
+           clientExtra: body.userRequest.utterance,
+           user: body.userRequest.user.id
+         });
  
+       } catch (error) {
+         console.error("GAS 호출 오류:", error);
+       }
+         }
+          
    if(body.action.params.type === "type_select2")
    {
      // 출발지 입력
