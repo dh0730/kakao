@@ -28,6 +28,9 @@ import axios from 'axios';
        } catch (error) {
          console.error("GAS 호출 오류:", error);
        }
+          finally(){
+            return res.status(200).json({ error: 'Success' });
+           }
          }
           
    if(body.action.params.type === "type_select2")
