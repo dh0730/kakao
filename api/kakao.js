@@ -47,19 +47,19 @@ import axios from 'axios';
       outputs: [
         {
           basicCard: {
-            title: "입력된 날짜: " + body.userRequest.utterance,
-            description: "맞나요~?",
+            title: "✅ 입력된 날짜: " + body.userRequest.utterance,
+            description: "위 내용이 맞는지 확인해주세요!🤔",
             thumbnail: {
               imageUrl: "http://k.kakaocdn.net/dn/dnya7y/btsNrbHi8Ar/TiJRsItsP2K30Cu20zVZiK/2x1.jpg" // ✅ 이미지 URL
             },
             buttons: [
               {
-                label: "맞아요!",
+                label: "맞아요!😄",
                 action: "block",
                 blockId: "67fee93928fcaa18c05ca6ce"
               },
               {
-                label: "아니에요!",
+                label: "아니에요!😔",
                 action: "block",
                 blockId: "67fee932be2a6a734e476b9b"
               }
