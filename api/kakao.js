@@ -8,13 +8,14 @@ import axios from 'axios';
  
    // 요청 body 받기
    const body = req.body;
-   var gasUrl = 'https://script.google.com/macros/s/AKfycbyfVbTEi-Y5Em8cF19mqFyZLsGs5lndY-m0TjJjuMVwH1c88Vlna9CqGAzxP2JusREx/exec';
+   var gasUrl = 'https://script.google.com/macros/s/AKfycbzj5cPIc8PaNr2Htl2B56vUXoaDYSMUSt4M2_Qqv3yTE1n8r66-pwNlilZJxALXRYQM/exec';
    var gasResponse = '';
    // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
    console.log("카카오 요청 수신:", JSON.stringify(body));
    var response = "";
+   const mType = body.action.params.type;
 
-  if (body.action.params.type === "clean")
+  if (mType === "clean")
          {
            try {
          // GAS에 보낼 데이터
@@ -31,8 +32,15 @@ import axios from 'axios';
             return res.status(200).json({ error: 'Success' });
            }
          }
-          
-   if(body.action.params.type === "type_select2")
+   else if(mType === "fallback")
+   {
+    gasResponse = await axios.post(gasUrl, {
+     params: body.action.params,
+     clientExtra: body.userRequest.utterance,
+     user: body.userRequest.user.id,
+     block: body.flow.lastBlock.id
+   }
+   else if(body.action.params.type === "type_select2")
    {
      // 출발지 입력
      if (body.flow.lastBlock.name === "견적서5")
