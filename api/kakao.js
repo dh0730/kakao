@@ -42,20 +42,25 @@ import axios from 'axios';
     if (1 == 1)
     {
       response = {
-       version: "2.0",
-       template: {
-         outputs: [],
-         quickReplies: [],
-       },
-       context: {
-         values: []
-       },
-       // 👉 여기서 자동으로 특정 블록으로 이동시키는 핵심
-       action: {
-         type: "block",
-         blockId: "67fee93928fcaa18c05ca6ce" // 원하는 블록 ID로 교체
-       }
-     };
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          basicCard: {
+            title: "입력된 도착지 : 777",
+            description: "입력된 내용을 확인해볼까요?",
+            buttons: [
+              {
+                action: "message",
+                label: "네!",
+                messageText: "확인했습니다."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  };
 
      
     }
