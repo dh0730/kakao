@@ -25,7 +25,7 @@ import axios from 'axios';
        "outputs": [
          {
            "basicCard": {
-             "title": "입력된 도착지 : " + body.userRequest.utterance,
+             "title": "입력된 도착지 : 777",
              "description": "입력된 내용을 확인해볼까요?",
              "buttons": [
                {
