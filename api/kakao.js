@@ -27,7 +27,7 @@ import axios from 'axios';
            }).catch(err => {
              console.error("GAS 호출 오류:", err);
            });
-         }, 0); // 또는 100ms
+         }, 2000); // 또는 100ms
          }
    else if(mType === "fallback")
    {
