@@ -14,7 +14,7 @@ import axios from 'axios';
    console.log("카카오 요청 수신:", JSON.stringify(body));
    var response = "";
    const mType = body.action.params.type;
-
+   var typeDetail = "";
   if (mType === "clean") 
         {
 
@@ -38,29 +38,29 @@ import axios from 'axios';
          }
    else if(mType === "fallback")
    {
-    response = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          basicCard: {
-            title: "입력된 도착지 : 777",
-            description: "입력된 내용을 확인해볼까요?",
-            buttons: [
-              {
-                action: "message",
-                label: "네!",
-                messageText: "확인했습니다."
-              }
-            ]
-          }
-        }
-      ]
-    }
-  };
+    typeDetail = body.action.params.typeDetail;
+    if (typeDetail == "type_date")
+    {
+      response = {
+       version: "2.0",
+       template: {
+         outputs: [],
+         quickReplies: [],
+       },
+       context: {
+         values: []
+       },
+       // 👉 여기서 자동으로 특정 블록으로 이동시키는 핵심
+       action: {
+         type: "block",
+         blockId: "67fee93928fcaa18c05ca6ce" // 원하는 블록 ID로 교체
+       }
+     };
 
-  res.status(200).json(response);
-    
+     
+    }
+    res.status(200).json(response);
+   
            try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
