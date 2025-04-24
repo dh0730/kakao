@@ -34,12 +34,23 @@ import axios from 'axios';
          }
    else if(mType === "fallback")
    {
-    gasResponse = await axios.post(gasUrl, {
-     params: body.action.params,
-     clientExtra: body.userRequest.utterance,
-     user: body.userRequest.user.id,
-     block: body.flow.lastBlock.id
-   }
+           try {
+         // GAS에 보낼 데이터
+           gasResponse = await axios.post(gasUrl, {
+           params: body.action.params,
+           clientExtra: body.userRequest.utterance,
+           user: body.userRequest.user.id,
+           block: body.flow.lastBlock.id
+         });
+ 
+       } catch (error) {
+         console.error("GAS 호출 오류:", error);
+       }
+          finally{
+            return res.status(200).json({ error: 'Success' });
+           }
+       }
+    
    else if(body.action.params.type === "type_select2")
    {
      // 출발지 입력
