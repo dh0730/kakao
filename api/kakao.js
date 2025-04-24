@@ -1,6 +1,7 @@
 import axios from 'axios';
  
  export default async function handler(req, res) {
+  res.status(200).json({ error: 'Success' });
    // 카카오 챗봇은 POST로 요청을 보냅니다.
    if (req.method !== 'POST') {
      return res.status(405).json({ error: 'Method Not Allowed' });
@@ -29,7 +30,7 @@ import axios from 'axios';
          console.error("GAS 호출 오류:", error);
        }
           finally{
-            return res.status(200).json({ error: 'Success' });
+            return;
            }
          }
    else if(mType === "fallback")
