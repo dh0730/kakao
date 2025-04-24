@@ -20,27 +20,27 @@ import axios from 'axios';
 
 
          response = {
-     "version": "2.0",
-     "template": {
-       "outputs": [
-         {
-           "basicCard": {
-             "title": "입력된 도착지 : 777",
-             "description": "입력된 내용을 확인해볼까요?",
-             "buttons": [
-               {
-                 "action": "block",
-                 "label": "네!",
-                 "blockId": "67ead98ce740af7a5e26563c"
-               }
-             ]
-           }
-         }
-       ]
-     }
-   };
-         
-         res.status(200).json(response);
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          basicCard: {
+            title: "입력된 도착지 : 777",
+            description: "입력된 내용을 확인해볼까요?",
+            buttons: [
+              {
+                action: "message",
+                label: "네!",
+                messageText: "확인했습니다."
+              }
+            ]
+          }
+        }
+      ]
+    }
+  };
+
+  res.status(200).json(response);
            try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
