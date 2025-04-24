@@ -17,7 +17,30 @@ import axios from 'axios';
 
   if (mType === "clean") 
         {
-         res.status(200).json({ error: 'Success' });
+
+
+         response = {
+     "version": "2.0",
+     "template": {
+       "outputs": [
+         {
+           "basicCard": {
+             "title": "입력된 도착지 : " + body.userRequest.utterance,
+             "description": "입력된 내용을 확인해볼까요?",
+             "buttons": [
+               {
+                 "action": "block",
+                 "label": "네!",
+                 "blockId": "67ead98ce740af7a5e26563c"
+               }
+             ]
+           }
+         }
+       ]
+     }
+   };
+         
+         res.status(200).json(response);
            try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
