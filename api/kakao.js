@@ -8,7 +8,7 @@ import axios from 'axios';
  
    // 요청 body 받기
    const body = req.body;
-   var gasUrl = 'https://script.google.com/macros/s/AKfycbxjcJwhJHwlW2isFYo-BiiKkgkqh5RTgb70UirQfjw8sDIrjmmvsEFiDFme0Gpn05-V/exec';
+   var gasUrl = 'https://script.google.com/macros/s/AKfycbzhGmtExyR7TG5QRTS4i4s7dDGlLx30MQ0CimAEvsfNyDV8Hptskos5R3jDutrfMc4A/exec';
    var gasResponse = '';
    // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
    console.log("카카오 요청 수신:", JSON.stringify(body));
@@ -17,17 +17,20 @@ import axios from 'axios';
 
   if (mType === "clean") 
         {
-         res.status(200).json({ error: 'Success' });
-
-         setTimeout(() => {
-           axios.post(gasUrl, {
-             params: body.action.params,
-             clientExtra: body.action.clientExtra,
-             user: body.userRequest.user.id
-           }).catch(err => {
-             console.error("GAS 호출 오류:", err);
-           });
-         }, 20000); // 또는 100ms
+           try {
+         // GAS에 보낼 데이터
+           gasResponse = await axios.post(gasUrl, {
+           params: body.action.params,
+           clientExtra: body.action.clientExtra,
+           user: body.userRequest.user.id
+         });
+ 
+       } catch (error) {
+         console.error("GAS 호출 오류:", error);
+       }
+          finally{
+            return res.status(200).json({ error: 'Success' });
+           }
          }
    else if(mType === "fallback")
    {
