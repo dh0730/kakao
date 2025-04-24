@@ -15,65 +15,91 @@ import axios from 'axios';
    var response = "";
    const mType = body.action.params.type;
    var typeDetail = "";
-  if (mType === "clean") 
-        {
-
-
-         
-  res.status(200).json({ error: 'Success' });
-           try {
+   if (mType === "clean")
+   {
+      res.status(200).json({ error: 'Success' });
+        try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
            params: body.action.params,
            clientExtra: body.action.clientExtra,
            user: body.userRequest.user.id
          });
- 
        } catch (error) {
          console.error("GAS 호출 오류:", error);
+       } finally{
+         return res.status(200).json({ error: 'Success' });
        }
-          finally{
-            return res.status(200).json({ error: 'Success' });
-           }
-         }
+   }
    else if(mType === "fallback")
    {
     typeDetail = body.action.params.typeDetail;
-    if (1 == 1)
+    if (body.flow.lastBlock.id == "67fee932be2a6a734e476b9b")
+    {
+     response = {
+         version: "2.0",
+         template: {
+         outputs: [
+           {
+             basicCard: {
+               title: "✅ 입력된 날짜: " + body.userRequest.utterance,
+               description: "위 날짜가 맞는지 확인해주세요!🤔",
+               thumbnail: {
+                 imageUrl: "http://k.kakaocdn.net/dn/dnya7y/btsNrbHi8Ar/TiJRsItsP2K30Cu20zVZiK/2x1.jpg" // ✅ 이미지 URL
+               },
+               buttons: [
+                 {
+                   label: "맞아요!😄",
+                   action: "block",
+                   blockId: "67fee93928fcaa18c05ca6ce"
+                 },
+                 {
+                   label: "아니에요!😔",
+                   action: "block",
+                   blockId: "67fee932be2a6a734e476b9b"
+                 }
+               ]
+             }
+           }
+         ]
+       }
+     };
+    }
+    else if (body.flow.lastBlock.id == "67fee93928fcaa18c05ca6ce")
     {
       response = {
-    version: "2.0",
-    template: {
-      outputs: [
-        {
-          basicCard: {
-            title: "✅ 입력된 날짜: " + body.userRequest.utterance,
-            description: "위 내용이 맞는지 확인해주세요!🤔",
-            thumbnail: {
-              imageUrl: "http://k.kakaocdn.net/dn/dnya7y/btsNrbHi8Ar/TiJRsItsP2K30Cu20zVZiK/2x1.jpg" // ✅ 이미지 URL
-            },
-            buttons: [
-              {
-                label: "맞아요!😄",
-                action: "block",
-                blockId: "67fee93928fcaa18c05ca6ce"
-              },
-              {
-                label: "아니에요!😔",
-                action: "block",
-                blockId: "67fee932be2a6a734e476b9b"
+          version: "2.0",
+          template: {
+          outputs: [
+            {
+              basicCard: {
+                title: "✅ 입력된 날짜: " + body.userRequest.utterance,
+                description: "위 주소가 맞는지 확인해주세요!🤔",
+                thumbnail: {
+                  imageUrl: "http://k.kakaocdn.net/dn/dnya7y/btsNrbHi8Ar/TiJRsItsP2K30Cu20zVZiK/2x1.jpg" // ✅ 이미지 URL
+                },
+                buttons: [
+                  {
+                    label: "맞아요!😄",
+                    action: "block",
+                    blockId: "67fee942040842224335c254"
+                  },
+                  {
+                    label: "아니에요!😔",
+                    action: "block",
+                    blockId: "67fee93928fcaa18c05ca6ce"
+                  }
+                ]
               }
-            ]
-          }
+            }
+          ]
         }
-      ]
-    }
-  };
+      };
      
     }
+    
     res.status(200).json(response);
-   
-           try {
+        try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
            params: body.action.params,
@@ -87,8 +113,8 @@ import axios from 'axios';
        }
           finally{
             return;
-           }
-       }
+         }
+   }
     
    else if(body.action.params.type === "type_select2")
    {
