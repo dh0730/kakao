@@ -20,7 +20,7 @@ import axios from 'axios';
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
            params: body.action.params,
-           clientExtra: body.userRequest.utterance,
+           clientExtra: body.action.clientExtra,
            user: body.userRequest.user.id
          });
  
