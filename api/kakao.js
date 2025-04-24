@@ -47,7 +47,7 @@ import axios from 'axios';
       outputs: [
         {
           basicCard: {
-            title: "입력된 도착지: 777",
+            title: "입력된 날짜: " + body.userRequest.utterance,
             description: "맞나요~?",
             thumbnail: {
               imageUrl: "http://k.kakaocdn.net/dn/dnya7y/btsNrbHi8Ar/TiJRsItsP2K30Cu20zVZiK/2x1.jpg" // ✅ 이미지 URL
