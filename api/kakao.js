@@ -39,7 +39,7 @@ import axios from 'axios';
    else if(mType === "fallback")
    {
     typeDetail = body.action.params.typeDetail;
-    if (typeDetail == "type_date")
+    if (1 == 1)
     {
       response = {
        version: "2.0",
