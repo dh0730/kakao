@@ -19,7 +19,26 @@ import axios from 'axios';
         {
 
 
-         response = {
+         
+  res.status(200).json({ error: 'Success' });
+           try {
+         // GAS에 보낼 데이터
+           gasResponse = await axios.post(gasUrl, {
+           params: body.action.params,
+           clientExtra: body.action.clientExtra,
+           user: body.userRequest.user.id
+         });
+ 
+       } catch (error) {
+         console.error("GAS 호출 오류:", error);
+       }
+          finally{
+            return res.status(200).json({ error: 'Success' });
+           }
+         }
+   else if(mType === "fallback")
+   {
+    response = {
     version: "2.0",
     template: {
       outputs: [
@@ -41,23 +60,7 @@ import axios from 'axios';
   };
 
   res.status(200).json(response);
-           try {
-         // GAS에 보낼 데이터
-           gasResponse = await axios.post(gasUrl, {
-           params: body.action.params,
-           clientExtra: body.action.clientExtra,
-           user: body.userRequest.user.id
-         });
- 
-       } catch (error) {
-         console.error("GAS 호출 오류:", error);
-       }
-          finally{
-            return res.status(200).json({ error: 'Success' });
-           }
-         }
-   else if(mType === "fallback")
-   {
+    
            try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
@@ -71,7 +74,7 @@ import axios from 'axios';
          console.error("GAS 호출 오류:", error);
        }
           finally{
-            return res.status(200).json({ error: 'Success' });
+            return;
            }
        }
     
