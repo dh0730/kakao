@@ -17,6 +17,7 @@ import axios from 'axios';
 
   if (mType === "clean") 
         {
+         res.status(200).json({ error: 'Success' });
            try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
