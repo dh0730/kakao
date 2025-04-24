@@ -42,24 +42,33 @@ import axios from 'axios';
     if (1 == 1)
     {
       response = {
-  version: "2.0",
-  template: {
-    outputs: [
-      {
-        simpleText: {
-          text: "잠시만요, 정보를 확인하고 있어요..."
+    version: "2.0",
+    template: {
+      outputs: [
+        {
+          basicCard: {
+            title: "입력된 도착지: 777",
+            description: "맞나요~?",
+            thumbnail: {
+              imageUrl: "http://k.kakaocdn.net/dn/dnya7y/btsNrbHi8Ar/TiJRsItsP2K30Cu20zVZiK/2x1.jpg" // ✅ 이미지 URL
+            },
+            buttons: [
+              {
+                label: "맞아요!",
+                action: "block",
+                blockId: "67fee93928fcaa18c05ca6ce"
+              },
+              {
+                label: "아니에요!",
+                action: "block",
+                blockId: "67fee932be2a6a734e476b9b"
+              }
+            ]
+          }
         }
-      }
-    ],
-    quickReplies: [
-      {
-        label: "계속",
-        action: "block",
-        blockId: "67fee93928fcaa18c05ca6ce"
-      }
-    ]
-  }
-};
+      ]
+    }
+  };
      
     }
     res.status(200).json(response);
