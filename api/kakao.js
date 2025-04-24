@@ -14,11 +14,10 @@ import axios from 'axios';
    console.log("카카오 요청 수신:", JSON.stringify(body));
    var response = "";
 
-  if (body.action.params.type === "type_select")
+  if (body.action.params.type === "clean")
          {
            try {
          // GAS에 보낼 데이터
-             body.action.params.type = "type_select";
            gasResponse = await axios.post(gasUrl, {
            params: body.action.params,
            clientExtra: body.userRequest.utterance,
