@@ -41,7 +41,7 @@ import axios from 'axios';
     typeDetail = body.action.params.typeDetail;
     if (1 == 1)
     {
-      const response = {
+      response = {
     version: "2.0",
     template: {
       outputs: [],
