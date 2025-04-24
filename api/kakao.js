@@ -18,20 +18,16 @@ import axios from 'axios';
   if (mType === "clean") 
         {
          res.status(200).json({ error: 'Success' });
-           try {
-         // GAS에 보낼 데이터
-           gasResponse = await axios.post(gasUrl, {
-           params: body.action.params,
-           clientExtra: body.action.clientExtra,
-           user: body.userRequest.user.id
-         });
- 
-       } catch (error) {
-         console.error("GAS 호출 오류:", error);
-       }
-          finally{
-            return;
-           }
+
+         setTimeout(() => {
+           axios.post(gasUrl, {
+             params: body.action.params,
+             clientExtra: body.action.clientExtra,
+             user: body.userRequest.user.id
+           }).catch(err => {
+             console.error("GAS 호출 오류:", err);
+           });
+         }, 0); // 또는 100ms
          }
    else if(mType === "fallback")
    {
