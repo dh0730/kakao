@@ -8,98 +8,34 @@ import axios from 'axios';
  
    // 요청 body 받기
    const body = req.body;
-   var gasUrl = 'https://script.google.com/macros/s/AKfycbxHHLCghe5fVBQYlZWIiJbp6ZOVZjcm1VDpBh9xTNHFc-oEJxZF6xrN8WTOurfjykgU/exec';
+   var gasUrl = 'https://script.google.com/macros/s/AKfycbwfkQjXx-lkN9UcNtxQyG1lwUM8IG0bhRL9CyLmupspP-FeIqIZigrTly4ljn5X0NH5/exec';
    var gasResponse = '';
    // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
    console.log("카카오 요청 수신:", JSON.stringify(body));
    var response = "";
    const mType = body.action.params.type;
-   var typeDetail = "";
-   if (mType === "clean")
-   {
-      res.status(200).json({ error: 'Success' });
-        try {
+
+  if (mType === "clean") 
+        {
+         res.status(200).json({ error: 'Success' });
+           try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
            params: body.action.params,
            clientExtra: body.action.clientExtra,
            user: body.userRequest.user.id
          });
+ 
        } catch (error) {
          console.error("GAS 호출 오류:", error);
-       } finally{
-         return;
        }
-   }
+          finally{
+            return res.status(200).json({ error: 'Success' });
+           }
+         }
    else if(mType === "fallback")
    {
-    typeDetail = body.action.params.typeDetail;
-    if (body.flow.lastBlock.id == "67fee932be2a6a734e476b9b")
-    {
-     response = {
-         version: "2.0",
-         template: {
-         outputs: [
-           {
-             basicCard: {
-               title: "✅ 입력된 날짜: " + body.userRequest.utterance,
-               description: "위 날짜가 맞는지 확인해주세요!🤔",
-               thumbnail: {
-                 imageUrl: "http://k.kakaocdn.net/dn/dnya7y/btsNrbHi8Ar/TiJRsItsP2K30Cu20zVZiK/2x1.jpg" // ✅ 이미지 URL
-               },
-               buttons: [
-                 {
-                   label: "맞아요!😄",
-                   action: "block",
-                   blockId: "67fee93928fcaa18c05ca6ce"
-                 },
-                 {
-                   label: "아니에요!😔",
-                   action: "block",
-                   blockId: "67fee932be2a6a734e476b9b"
-                 }
-               ]
-             }
-           }
-         ]
-       }
-     };
-    }
-    else if (body.flow.lastBlock.id == "67fee93928fcaa18c05ca6ce")
-    {
-      response = {
-          version: "2.0",
-          template: {
-          outputs: [
-            {
-              basicCard: {
-                title: "✅ 입력된 날짜: " + body.userRequest.utterance,
-                description: "위 주소가 맞는지 확인해주세요!🤔",
-                thumbnail: {
-                  imageUrl: "http://k.kakaocdn.net/dn/dnya7y/btsNrbHi8Ar/TiJRsItsP2K30Cu20zVZiK/2x1.jpg" // ✅ 이미지 URL
-                },
-                buttons: [
-                  {
-                    label: "맞아요!😄",
-                    action: "block",
-                    blockId: "67fee942040842224335c254"
-                  },
-                  {
-                    label: "아니에요!😔",
-                    action: "block",
-                    blockId: "67fee93928fcaa18c05ca6ce"
-                  }
-                ]
-              }
-            }
-          ]
-        }
-      };
-     
-    }
-    
-    res.status(200).json(response);
-        try {
+           try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
            params: body.action.params,
@@ -112,9 +48,9 @@ import axios from 'axios';
          console.error("GAS 호출 오류:", error);
        }
           finally{
-            return;
-         }
-   }
+            return res.status(200).json({ error: 'Success' });
+           }
+       }
     
    else if(body.action.params.type === "type_select2")
    {
