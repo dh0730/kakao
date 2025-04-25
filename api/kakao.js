@@ -17,7 +17,6 @@ import axios from 'axios';
    var typeDetail = "";
    if (mType === "clean")
    {
-      res.status(200).json({ error: 'Success' });
         try {
          // GAS에 보낼 데이터
            gasResponse = await axios.post(gasUrl, {
@@ -28,7 +27,7 @@ import axios from 'axios';
        } catch (error) {
          console.error("GAS 호출 오류:", error);
        } finally{
-         return;
+         return res.status(200).json({ error: 'Success' });
        }
    }
    else if(mType === "fallback")
