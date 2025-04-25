@@ -15,6 +15,9 @@ import axios from 'axios';
    var response = "";
    const mType = body.action.params.type;
    var typeDetail = "";
+
+  res.status(200).json({ error: 'Success' })
+  
    if (mType === "clean")
    {
         try {
@@ -27,7 +30,7 @@ import axios from 'axios';
        } catch (error) {
          console.error("GAS 호출 오류:", error);
        } finally{
-         return res.status(200).json({ error: 'Success' });
+         return ;
        }
    }
    else if(mType === "fallback")
