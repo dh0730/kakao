@@ -28,7 +28,7 @@ import axios from 'axios';
        } catch (error) {
          console.error("GAS 호출 오류:", error);
        } finally{
-         return ;
+         return res.status(200).json({"dddd" : "success"});
        }
    }
    else if(mType === "fallback")
