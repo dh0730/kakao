@@ -16,8 +16,6 @@ import axios from 'axios';
    const mType = body.action.params.type;
    var typeDetail = "";
 
-  res.status(200).json({ error: 'Success' })
-  
    if (mType === "clean")
    {
         try {
