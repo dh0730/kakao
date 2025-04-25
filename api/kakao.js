@@ -8,7 +8,7 @@ import axios from 'axios';
  
    // 요청 body 받기
    const body = req.body;
-   var gasUrl = 'https://script.google.com/macros/s/AKfycbwfkQjXx-lkN9UcNtxQyG1lwUM8IG0bhRL9CyLmupspP-FeIqIZigrTly4ljn5X0NH5/exec';
+   var gasUrl = 'https://script.google.com/macros/s/AKfycbx9A_HaWIigdmC3WWiDUBe_A0esFsohH1Wx35zq7VmPQikI0wpwVU7dgQN3J1R-Y0uy/exec';
    var gasResponse = '';
    // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
    console.log("카카오 요청 수신:", JSON.stringify(body));
