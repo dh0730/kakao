@@ -8,7 +8,7 @@ import axios from 'axios';
  
    // 요청 body 받기
    const body = req.body;
-   var gasUrl = 'https://script.google.com/macros/s/AKfycbxOjBkJXpQcPcGDxfN4o80XcyVLib9xOz0XP1JaqB6o2H2YarG4i_rUBBH4migRbN_Z/exec';
+   var gasUrl = 'http://kayjem06.mycafe24.com/receive_customer_info.php';
    var gasResponse = '';
    // 로그 찍기 (Vercel dashboard > Logs 에서 확인 가능)
    // console.log("카카오 요청 수신:", JSON.stringify(body));
