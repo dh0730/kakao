@@ -28,6 +28,7 @@ import axios from 'axios';
        } catch (error) {
          console.error("GAS 호출 오류:", error);
        } finally{
+         console.log(gasResponse);
          return res.status(200).json({"dddd" : "success"});
        }
    }
