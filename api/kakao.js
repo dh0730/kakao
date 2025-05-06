@@ -4,7 +4,7 @@ export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method Not Allowed' });
   }
-  console.log(req);
+  console.log(req.body);
 
   const body = req.body;
   var gasUrl = 'http://kayjem06.mycafe24.com/receive_customer_info.php';
