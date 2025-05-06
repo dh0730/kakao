@@ -33,7 +33,8 @@ export default async function handler(req, res) {
     const payload = {
       params: body.action.params,
       clientExtra: body.action.clientExtra,
-      user: body.userRequest.user.id
+      user: body.userRequest.user.id,
+      textData: body.userRequest.utterance
     };
 
     gasResponse = await sendToGAS(payload);
